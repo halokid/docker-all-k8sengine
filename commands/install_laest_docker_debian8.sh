@@ -1,7 +1,7 @@
 #!/bin/bash
 
-apt-get purge "lxc-docker*"
-apt-get purge "docker.io*"
+apt-get purge "lxc-docker*" -y
+apt-get purge "docker.io*" -y
 
 sleep 3
 
