@@ -35,4 +35,10 @@ sudo service docker start
 sudo docker run hello-world
 
 
+sleep 5
+sudo apt-get install python-pip python-dev -y
+pip install -U docker-compose
+
+
+
 
