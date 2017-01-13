@@ -1,5 +1,7 @@
 #!/bin/bash
 
+apt-get install sudo -y
+
 apt-get purge "lxc-docker*" -y
 apt-get purge "docker.io*" -y
 
@@ -32,7 +34,7 @@ sudo apt-get update
 sudo apt-get install sudo -y
 sudo apt-get install docker-engine -y
 sudo service docker start
-sudo docker run hello-world
+sudo docker run docker pull hub.c.163.com/r00txx/hello-world
 
 
 sleep 5
