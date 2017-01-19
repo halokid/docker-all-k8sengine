@@ -1,0 +1,46 @@
+version: "2"
+
+services:
+
+  fluentd:
+    image: fluent/fluentd:latest
+    ports:
+      - "24224:24224"
+    volumes:
+      - ./fluentd/etc:/fluentd/etc
+    command: /fluentd/etc/start.sh
+    networks:
+      - lognet
+
+  elasticsearch:
+    image: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - /usr/share/elasticsearch/data:/usr/share/elasticsearch/data
+    networks:
+      - lognet
+
+  kibana:
+    image: kibana
+    restart: always
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    networks:
+      - lognet
+
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+    logging:
+      driver: fluentd
+    networks:
+      - lognet
+
+networks:
+  lognet:
+    driver: bridge
