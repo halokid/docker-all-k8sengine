@@ -1,0 +1,36 @@
+version: "2.1"
+
+services:
+  node:
+    container_name: hackershall-dev-app
+    image: hackershall-dev-i
+    build:
+      context: .
+      dockerfile: ./.docker/node.dev.dockerfile
+    ports:
+      - "7000:7000"
+      - "5858:5858"
+    networks:
+      - hackershall-network
+    volumes:
+      - .:/var/app
+    env_file:
+      - ./.docker/env/app.dev.env
+    working_dir: /var/app
+
+  mongo:
+    container_name: hackershall-dev-mongodb
+    image: mongo:3.4.1
+    build:
+      context: .
+      dockerfile: ./.docker/mongo.dev.dockerfile
+    env_file:
+      - ./.docker/env/mongo.dev.env
+    networks:
+      - hackershall-network
+    ports:
+      - "27017"
+
+networks:
+  hackershall-network:
+    driver: bridge
