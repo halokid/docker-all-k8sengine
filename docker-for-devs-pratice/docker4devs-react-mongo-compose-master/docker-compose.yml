@@ -1,6 +1,19 @@
 version: "2.1"
 
 services:
+  nginx:
+    container_name: hackershall-dev-nginx
+    image: nginx-dev-i
+    build:
+      context: .
+      dockerfile: ./.docker/nginx.dev.dockerfile
+    networks:
+      - hackershall-network
+    links:
+      - node:node
+    ports:
+      - "80:80"
+    
   node:
     container_name: hackershall-dev-app
     image: hackershall-dev-i
