@@ -1,0 +1,4 @@
+*.phar
+php/*.tgz
+.DS_Store
+!.gitignore
