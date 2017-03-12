@@ -1,24 +1,4 @@
-deb http://mirrors.aliyun.com/debian jessie main contrib non-free
-deb http://mirrors.aliyun.com/debian jessie-proposed-updates main contrib non-free
-deb http://mirrors.aliyun.com/debian jessie-updates main contrib non-free
-deb http://mirrors.aliyun.com/debian jessie-backports main contrib non-free
-
-deb-src http://mirrors.aliyun.com/debian jessie main contrib non-free
-deb-src http://mirrors.aliyun.com/debian jessie-proposed-updates main contrib non-free
-deb-src http://mirrors.aliyun.com/debian jessie-updates main contrib non-free
-deb-src http://mirrors.aliyun.com/debian jessie-backports main contrib non-free
-
-deb http://mirrors.aliyun.com/debian-security/ jessie/updates main non-free contrib
-deb-src http://mirrors.aliyun.com/debian-security/ jessie/updates main non-free contrib
-deb http://mirrors.aliyuncs.com/debian jessie main contrib non-free
-deb http://mirrors.aliyuncs.com/debian jessie-proposed-updates main contrib non-free
-deb http://mirrors.aliyuncs.com/debian jessie-updates main contrib non-free
-deb http://mirrors.aliyuncs.com/debian jessie-backports main contrib non-free
-
-deb-src http://mirrors.aliyuncs.com/debian jessie main contrib non-free
-deb-src http://mirrors.aliyuncs.com/debian jessie-proposed-updates main contrib non-free
-deb-src http://mirrors.aliyuncs.com/debian jessie-updates main contrib non-free
-deb-src http://mirrors.aliyuncs.com/debian jessie-backports main contrib non-free
-
-deb http://mirrors.aliyuncs.com/debian-security/ jessie/updates main non-free contrib
-deb-src http://mirrors.aliyuncs.com/debian-security/ jessie/updates main non-free contrib
+deb http://mirrors.aliyun.com/debian/ jessie main non-free contrib
+deb http://mirrors.aliyun.com/debian/ jessie-proposed-updates main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ jessie main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ jessie-proposed-updates main non-free contrib
