@@ -21,7 +21,7 @@ sudo apt-key adv \
        
 sleep 3
 echo "deb https://apt.dockerproject.org/repo debian-jessie main" > /etc/apt/sources.list.d/docker.list
-
+sudo apt-get update
 
 sleep 3
 apt-cache policy docker-engine
@@ -30,9 +30,8 @@ apt-cache policy docker-engine
 
 
 sleep 3
-sudo apt-get update
 sudo apt-get install sudo -y
-sudo apt-get install docker-engine -y
+sudo apt-get install docker-engine -y --force-yes
 sudo service docker start
 sudo docker run docker pull hub.c.163.com/r00txx/hello-world
 
