@@ -24,7 +24,9 @@ import (
 
 const VERSION = "0.0.1"
 
+// FIXME: 监听接收 docker客户端发来的请求
 func (srv *Server) ListenAndServe() error {
+	// 并行执行 go func() 形式
 	go rcli.ListenAndServeHTTP("127.0.0.1:8080", srv)
 	// FIXME: we want to use unix sockets here, but net.UnixConn doesn't expose
 	// CloseWrite(), which we need to cleanly signal that stdin is closed without
@@ -920,6 +922,10 @@ func (srv *Server) CmdRun(stdin io.ReadCloser, stdout io.Writer, args ...string)
 	return nil
 }
 
+
+//建立一个新的服务端
+// 运行一个服务端的实例
+// FIXME: 这个是docker整个架构里面的关键逻辑代码
 func New() (*Server, error) {
 	future.Seed()
 	// if err != nil {

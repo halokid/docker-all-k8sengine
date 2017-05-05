@@ -15,10 +15,12 @@ func URLToCall(u *url.URL) (method string, args []string) {
 	return path.Base(u.Path), u.Query()[ARG_URL_KEY]
 }
 
+
+//FIXME: docker 服务端的 处理接收到的 http 请求的逻辑代码
 func ListenAndServeHTTP(addr string, service Service) error {
 	return http.ListenAndServe(addr, http.HandlerFunc(
 		func(w http.ResponseWriter, r *http.Request) {
-			cmd, args := URLToCall(r.URL)
+			cmd, args := URLToCall(r.URL)			// 取得 URL 里面的  ?q=%s  ， q参数的值
 			if err := call(service, r.Body, &AutoFlush{w}, append([]string{cmd}, args...)...); err != nil {
 				fmt.Fprintf(w, "Error: "+err.Error()+"\n")
 			}
