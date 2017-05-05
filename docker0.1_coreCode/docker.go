@@ -1,3 +1,7 @@
+/**
+这个是 go build 成一个 docker包的入口文件
+ */
+
 package docker
 
 import (

@@ -16,8 +16,17 @@ clean:
 	go clean
 	rm -rf env build
 
+
+# 编译docker客户端的命令， 编译的入口文件是 ./docker/docker.go
 docker.o: env deps
 	GOPATH=${GOPATH} go build -o ${BUILDPATH}/docker docker/docker.go
 
+
+# 编译docker服务端的命令， 编译的入口文件是 ./dockerd/dockerd.go
 dockerd.o: env deps
 	GOPATH=${GOPATH} go build -o ${BUILDPATH}/dockerd dockerd/dockerd.go
+
+
+
+
+
