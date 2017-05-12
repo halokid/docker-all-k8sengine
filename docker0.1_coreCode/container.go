@@ -308,6 +308,7 @@ func (container *Container) start() error {
 	return container.cmd.Start()
 }
 
+//FIXME: 真正开始建立一个容器的逻辑代码， 感觉docker分析运行参数，然后解释参数，再到根据参数来运行容器的那段代码写得太生涩的，感觉架构不是很清晰，一路追踪下来，分析到这里
 func (container *Container) Start() error {
 	if err := container.Mountpoint.EnsureMounted(); err != nil {
 		return err
@@ -337,6 +338,7 @@ func (container *Container) Start() error {
 	params = append(params, "--", container.Path)
 	params = append(params, container.Args...)
 
+	// FIXME: 执行linux的 lxc-start 命令，上面都是定义一些容器的设置参数，网络，配置，用户等
 	container.cmd = exec.Command("/usr/bin/lxc-start", params...)
 
 	var err error
@@ -350,7 +352,7 @@ func (container *Container) Start() error {
 	}
 	container.State.setRunning(container.cmd.Process.Pid)
 	container.save()
-	go container.monitor()
+	go container.monitor()			// goroutine 并行启动docker 的monitor
 	return nil
 }
 
@@ -515,6 +517,7 @@ func (container *Container) Restart() error {
 }
 
 // Wait blocks until the container stops running, then returns its exit code.
+// 当容器产生错误，启动不起来，执行此函数
 func (container *Container) Wait() int {
 
 	for container.State.Running {

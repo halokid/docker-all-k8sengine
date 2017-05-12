@@ -25,6 +25,9 @@ type Service interface {
 type Cmd func(io.ReadCloser, io.Writer, ...string) error
 type CmdMethod func(Service, io.ReadCloser, io.Writer, ...string) error
 
+/**
+docker 服务端接收到  docker 客户端的请求之后，真正执行逻辑的函数
+ */
 func call(service Service, stdin io.ReadCloser, stdout io.Writer, args ...string) error {
 	if len(args) == 0 {
 		args = []string{"help"}
@@ -40,14 +43,16 @@ func call(service Service, stdin io.ReadCloser, stdout io.Writer, args ...string
 	if cmd == "" {
 		cmd = "help"
 	}
-	method := getMethod(service, cmd)
+	// 上面为解释 docker help命令后面的参数的， 下面为根据参数的不同，而执行不同的 method，可以认为是一种handler吧
+	method := getMethod(service, cmd)				// 执行method
 	if method != nil {
-		return method(stdin, stdout, flags.Args()[1:]...)
+		return method(stdin, stdout, flags.Args()[1:]...)			// 返回  error
 	}
 	return errors.New("No such command: " + cmd)
 }
 
 func getMethod(service Service, name string) Cmd {
+	// 如果参数为 help
 	if name == "help" {
 		return func(stdin io.ReadCloser, stdout io.Writer, args ...string) error {
 			if len(args) == 0 {
@@ -62,11 +67,15 @@ func getMethod(service Service, name string) Cmd {
 			return nil
 		}
 	}
+
+	// 如果参数不为 help
 	methodName := "Cmd" + strings.ToUpper(name[:1]) + strings.ToLower(name[1:])
 	method, exists := reflect.TypeOf(service).MethodByName(methodName)
 	if !exists {
 		return nil
 	}
+
+	// FIXME: 真正执行 docker 命令行逻辑的代码段
 	return func(stdin io.ReadCloser, stdout io.Writer, args ...string) error {
 		ret := method.Func.CallSlice([]reflect.Value{
 			reflect.ValueOf(service),
