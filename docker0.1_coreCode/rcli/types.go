@@ -46,7 +46,7 @@ func call(service Service, stdin io.ReadCloser, stdout io.Writer, args ...string
 	// 上面为解释 docker help命令后面的参数的， 下面为根据参数的不同，而执行不同的 method，可以认为是一种handler吧
 	method := getMethod(service, cmd)				// 执行method
 	if method != nil {
-		return method(stdin, stdout, flags.Args()[1:]...)			// 返回  error
+		return method(stdin, stdout, flags.Args()[1:]...)			// 如果 method 不为空， 则执行 method
 	}
 	return errors.New("No such command: " + cmd)
 }
@@ -70,13 +70,15 @@ func getMethod(service Service, name string) Cmd {
 
 	// 如果参数不为 help
 	methodName := "Cmd" + strings.ToUpper(name[:1]) + strings.ToLower(name[1:])
-	method, exists := reflect.TypeOf(service).MethodByName(methodName)
+	method, exists := reflect.TypeOf(service).MethodByName(methodName)		// golang 的 reflect 机制获取方法的名字
 	if !exists {
 		return nil
 	}
 
 	// FIXME: 真正执行 docker 命令行逻辑的代码段
 	return func(stdin io.ReadCloser, stdout io.Writer, args ...string) error {
+
+		// 这里就是 具体执行docker 客户端发过来的命令的逻辑代码， 是利用 golang的 reflect 机制来执行呃
 		ret := method.Func.CallSlice([]reflect.Value{
 			reflect.ValueOf(service),
 			reflect.ValueOf(stdin),
