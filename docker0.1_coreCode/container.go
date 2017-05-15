@@ -22,6 +22,7 @@ func init() {
 	sysInitPath = SelfPath()
 }
 
+//FIXME: 容器的主体逻辑代码文件
 type Container struct {
 	Id   string
 	Root string
