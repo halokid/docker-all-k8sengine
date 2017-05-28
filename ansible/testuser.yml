@@ -1,0 +1,11 @@
+- name: changepasswd 
+  hosts: 192.168.0.139 
+  sudo: yes
+  vars:
+    change_user: username
+    passwd: $1$zYZGbfAM$7aUvB/8EGbQhKaZuBMhV90 
+  tasks:
+    - name: changepasswod 
+      user: name={{ change_user }} password={{ passwd }} update_password=always
+
+
