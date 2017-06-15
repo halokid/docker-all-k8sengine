@@ -1,0 +1,18 @@
+#get the password of linux system, "12345678" 代表是8位的密码， -stdin 捕捉输入的源
+echo "88888888" | openssl passwd -1 -salt '12345678' -stdin
+
+#上面输出 $1$12345678$Q2fNnM.QeZXhdtHKV6X0H1
+# 这个  $1$12345678$Q2fNnM.QeZXhdtHKV6X0H1  密码可以直接贴在 linux的  /etc/shadow 文件里面去
+
+
+
+# 这句是错的， 记得  $ 等符号要进行转义  \$
+ansible 192.168.0.99 -m user -a "name=haha password=$1$12345678$Q2fNnM.QeZXhdtHKV6X0H1 home=/home/haha uid=999 comment='this is a ansible test user' shell=/bin/bash"
+
+
+# 这句是正确的
+ansible 192.168.0.139 -m user -a "name=haha password=\$1\$12345678\$Q2fNnM.QeZXhdtHKV6X0H1 home=/home/haha uid=999 comment='this is a ansible test user' shell=/bin/bash"
+
+
+
+
