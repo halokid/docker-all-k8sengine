@@ -195,6 +195,38 @@ for method, routes := range m {
 }
 
 
+func (container *libcontainer.Config, console, rootfs, dataPath, init string,
+      child *os.File, args []string) *exec.Cmd {
+
+  c.Path = d.initPath
+
+  c.Args = append([]string{
+    DriverName,
+    "-console", console,
+    "xxx"
+  }, args...)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
