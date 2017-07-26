@@ -13,17 +13,35 @@ source ./environment.sh
 ./make_pem.sh 
 
 
-#设置etcd环境变量
+#设置etcd环境变量， 第一个参数就是etcd 服务的name etcd-host0 后面的这个数字 
 source  ./make_etcd-$1.sh
 #source  ./make_etcd-1.sh
 #source  ./make_etcd-2.sh
 
 
-
-#生成etcd服务
+#安装etcd服务 
+./install_etcd.sh
+#生成etcd服务系统配置
 ./set_etcd.sh
 #启动etcd服务
-./start_etcd.sh  
+./start_etcd.sh 
+#验证etcd服务
+./verify_etcd.sh  
+
+
+
+#安装kube
+. install_kube.sh
+#创建kube ca文件
+./make_kube_ca.sh
+#创建kube配置文件
+./make_kube_config.sh
+
+
+
+#创建flanneld ca证书 
+./make_flannel_ca.sh 
+
 
 
 
