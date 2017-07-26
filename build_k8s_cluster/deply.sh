@@ -14,7 +14,7 @@ source ./environment.sh
 
 
 #设置etcd环境变量
-source  ./make_etcd-0.sh
+source  ./make_etcd-$1.sh
 #source  ./make_etcd-1.sh
 #source  ./make_etcd-2.sh
 
