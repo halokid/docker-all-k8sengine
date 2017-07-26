@@ -2,8 +2,8 @@
 
 git add *
 git commit -m "xx"
-git push
+#git push
 
-echo -e "82049406@qq.com"
+echo -e "82049406@qq.com" | git push
 
 
