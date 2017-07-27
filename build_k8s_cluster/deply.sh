@@ -1,5 +1,6 @@
 ###整体执行流程
 
+#---------- 只是修改环境变量的两个文件是 ./environment.sh ./make_etcd-0.sh --------------#
 
 #建立 env 信息
 source ./environment.sh
@@ -41,6 +42,28 @@ source  ./make_etcd-$1.sh
 
 #创建flanneld ca证书 
 ./make_flannel_ca.sh 
+#创建flanneld pod 网络 
+./make_flannel_network.sh  
+#安装flanneld  
+./install_flanneld.sh 
+#生成flanneld 启动service 文件  
+./make_flannel_system.service.sh  
+#启动flanneld
+./start_flannel.sh 
+
+
+
+#运行 kube  master  apiserver
+./start_kube-apiserver.sh 
+#运行 kube controller manager  
+./start_kube-controller-manager.sh
+#运行 kube scheduler 
+./start_kube-scheduler.sh
+
+
+
+
+
 
 
 

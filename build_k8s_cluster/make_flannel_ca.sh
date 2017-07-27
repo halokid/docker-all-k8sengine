@@ -34,7 +34,8 @@ cfssl gencert -ca=/etc/kubernetes/ssl/ca.pem \
 ls flanneld*
 sleep 5
 
-flanneld.csr  flanneld-csr.json  flanneld-key.pem flanneld.pem
+#flanneld.csr  flanneld-csr.json  flanneld-key.pem flanneld.pem 
+
 sudo mkdir -p /etc/flanneld/ssl
 sudo mv flanneld*.pem /etc/flanneld/ssl
 rm flanneld.csr  flanneld-csr.json

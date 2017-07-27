@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # TLS Bootstrapping 使用的 Token，可以使用命令 head -c 16 /dev/urandom | od -An -t x | tr -d ' ' 生成
-BOOTSTRAP_TOKEN="41f7e4ba8b7be874fcff18bf5cf41a7c"
+export BOOTSTRAP_TOKEN="41f7e4ba8b7be874fcff18bf5cf41a7c"
 
 # 最好使用 主机未用的网段 来定义服务网段和 Pod 网段
 
 # 服务网段 (Service CIDR），部署前路由不可达，部署后集群内使用IP:Port可达
-SERVICE_CIDR="10.254.0.0/16"
+export SERVICE_CIDR="10.254.0.0/16"
 
 # POD 网段 (Cluster CIDR），部署前路由不可达，**部署后**路由可达(flanneld保证)
-CLUSTER_CIDR="172.30.0.0/16"
+export CLUSTER_CIDR="172.30.0.0/16"
 
 # 服务端口范围 (NodePort Range)
 export NODE_PORT_RANGE="8400-9000"
@@ -28,5 +28,9 @@ export CLUSTER_DNS_SVC_IP="10.254.0.2"
 
 # 集群 DNS 域名
 export CLUSTER_DNS_DOMAIN="cluster.local."
+
+
+export PATH=/root/local/bin:$PATH
+
 
 
