@@ -1,3 +1,11 @@
+#apiVersion: v1
+#kind: ServiceAccount
+#metadata:
+#  labels:
+#    k8s-app: kubernetes-heapster
+#  name: heapster
+#  namespace: kube-system
+#---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -18,7 +26,11 @@ spec:
         imagePullPolicy: IfNotPresent
         command:
         - /heapster
-        - --source=kubernetes:https://kubernetes.default
-        - --sink=influxdb:http://monitoring-influxdb:8086
+          #- --source=kubernetes:http://10.86.20.57:8080?inClusterConfig=false&useServiceAccount=false
+          #- --source=kubernetes:http://10.86.20.57:8080?inClusterConfig=false&useServiceAccount=false
+        - --source=kubernetes:http://10.86.20.57:8080?inClusterConfig=false&useServiceAccount=false
+          #- --sink=influxdb:http://monitoring-influxdb:8086 
+        - --sink=influxdb:http://172.30.1.8:8086
+          #- --sink=influxdb:http://172.30.1.8:8086
 
 
