@@ -1,0 +1,8 @@
+
+FROM hub.c.163.com/r00txx/lnmp:latest 
+
+CMD ["/usr/sbin/sshd", "-D"]
+
+#ENTRYPOINT ["/usr/local/bin/curl"]
+
+
