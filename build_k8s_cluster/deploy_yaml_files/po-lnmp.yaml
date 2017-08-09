@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lnmp 
+spec:
+  containers:
+  - name: lnmp 
+    image: po_lnmp:latest
+    ports:
+    - containerPort: 22
+
