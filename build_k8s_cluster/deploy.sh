@@ -32,7 +32,7 @@ source  ./make_etcd-$1.sh
 
 
 #安装kube
-. install_kube.sh
+./install_kube.sh
 #创建kube ca文件
 ./make_kube_ca.sh
 #创建kube配置文件
