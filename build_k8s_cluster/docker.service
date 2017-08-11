@@ -5,7 +5,8 @@ Documentation=http://docs.docker.io
 [Service]
 Environment="PATH=/root/local/bin:/bin:/sbin:/usr/bin:/usr/sbin"
 EnvironmentFile=-/run/flannel/docker
-ExecStart=/root/local/bin/dockerd --log-level=error $DOCKER_NETWORK_OPTIONS
+#ExecStart=/root/local/bin/dockerd --log-level=error $DOCKER_NETWORK_OPTIONS     #这个是自定义安装的dockerd  
+ExecStart=/usr/bin/dockerd --log-level=error $DOCKER_NETWORK_OPTIONS
 ExecReload=/bin/kill -s HUP $MAINPID
 Restart=on-failure
 RestartSec=5
@@ -14,6 +15,7 @@ LimitNPROC=infinity
 LimitCORE=infinity
 Delegate=yes
 KillMode=process
+MountFlags=.
 
 [Install]
 WantedBy=multi-user.target
