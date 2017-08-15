@@ -6,8 +6,8 @@ After=network.target
 [Service]
 WorkingDirectory=/var/lib/kube-proxy
 ExecStart=/root/local/bin/kube-proxy \
---bind-address=10.86.20.60 \
---hostname-override=10.86.20.60 \
+--bind-address=10.86.20.63 \
+--hostname-override=10.86.20.63 \
 --cluster-cidr=10.254.0.0/16 \
 --kubeconfig=/etc/kubernetes/kube-proxy.kubeconfig \
 --logtostderr=true \
