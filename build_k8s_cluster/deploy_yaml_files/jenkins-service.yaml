@@ -7,10 +7,11 @@ metadata:
 spec:
   ports:
     # The port that this service should serve on.
-    - port: 82
+    - port: 8080 
+    - port: 50000 
   # Label keys and values that must match in order to receive traffic for this service.
   selector:
-    app: jenkins 
+    run: my-jenkins 
   type: NodePort 
 
 
