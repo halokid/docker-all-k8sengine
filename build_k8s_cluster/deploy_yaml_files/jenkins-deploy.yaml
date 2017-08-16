@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1 
+kind: Deployment
+metadata:
+  name: my-jenkins 
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: jenkins 
+    spec:
+      containers:
+      - name: jenkins 
+        image: hub.c.163.com/r00txx/jenkins:py_testCoverage 
+        volumeMounts:
+          - name: jenkins-home-storage
+            mountPath: /var/jenkins_home
+        ports:
+        - containerPort: 8080
+        - containerPort: 50000 
+      volumes:
+        - name: jenkins-home-storage
+          hostPath: 
+           path: "/opt/gitcode/my_jenkins_home" 
+
+
