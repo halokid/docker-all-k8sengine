@@ -7,8 +7,12 @@ metadata:
 spec:
   ports:
     # The port that this service should serve on.
-    - port: 8080 
+    - port: 8080
+      targetPort: 8080 
+      name: web
     - port: 50000 
+      targetPort: 50000
+      name: manage
   # Label keys and values that must match in order to receive traffic for this service.
   selector:
     run: my-jenkins 
