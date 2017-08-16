@@ -3,11 +3,12 @@ kind: Deployment
 metadata:
   name: my-jenkins 
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
-        app: jenkins 
+        name: my-jenkins-xx
+        run: my-jenkins 
     spec:
       containers:
       - name: jenkins 
@@ -22,5 +23,28 @@ spec:
         - name: jenkins-home-storage
           hostPath: 
            path: "/opt/gitcode/my_jenkins_home" 
+      nodeName: 10.86.20.60
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: my-jenkins-xx 
+  name: my-jenkins 
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 8080
+      targetPort: 8080 
+      name: web
+    - port: 50000 
+      targetPort: 50000
+      name: manage
+  # Label keys and values that must match in order to receive traffic for this service.
+  selector:
+    run: my-jenkins 
+  type: NodePort 
+
+
 
 
