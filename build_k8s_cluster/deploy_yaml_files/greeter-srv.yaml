@@ -1,0 +1,23 @@
+# micro srv 本身不对外服务，也不用被其他的 service或者pod来引用， 所以不用设置 service
+apiVersion: extensions/v1beta1 
+kind: Deployment
+metadata:
+  name: micro-greeter-srv 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: micro-greeter-xx
+        run: micro-greeter 
+    spec:
+      containers:
+        - name: micro-greeter 
+          image: r00txx/micro-greeter:v1 
+          command: [
+            "/greeter-srv",   
+            "--registry_address=10.86.20.63:8500",
+          ]
+
+
+
