@@ -1,0 +1,78 @@
+Name:			10.86.20.60
+Role:			
+Labels:			beta.kubernetes.io/arch=amd64
+			beta.kubernetes.io/os=linux
+			kubernetes.io/hostname=10.86.20.60
+Annotations:		node.alpha.kubernetes.io/ttl=0
+			volumes.kubernetes.io/controller-managed-attach-detach=true
+Taints:			<none>
+CreationTimestamp:	Tue, 01 Aug 2017 09:20:34 +0800
+Phase:			
+Conditions:
+  Type			Status	LastHeartbeatTime			LastTransitionTime			Reason				Message
+  ----			------	-----------------			------------------			------				-------
+  OutOfDisk 		False 	Tue, 01 Aug 2017 10:31:13 +0800 	Tue, 01 Aug 2017 10:22:13 +0800 	KubeletHasSufficientDisk 	kubelet has sufficient disk space available
+  MemoryPressure 	False 	Tue, 01 Aug 2017 10:31:13 +0800 	Tue, 01 Aug 2017 10:22:13 +0800 	KubeletHasSufficientMemory 	kubelet has sufficient memory available
+  DiskPressure 		False 	Tue, 01 Aug 2017 10:31:13 +0800 	Tue, 01 Aug 2017 10:22:13 +0800 	KubeletHasNoDiskPressure 	kubelet has no disk pressure
+  Ready 		True 	Tue, 01 Aug 2017 10:31:13 +0800 	Tue, 01 Aug 2017 10:22:13 +0800 	KubeletReady 			kubelet is posting ready status. WARNING: CPU hardcapping unsupported
+Addresses:		10.86.20.60,10.86.20.60,10.86.20.60
+Capacity:
+ cpu:		4
+ memory:	10006956Ki
+ pods:		110
+Allocatable:
+ cpu:		4
+ memory:	9904556Ki
+ pods:		110
+System Info:
+ Machine ID:			624929de005847a1a22662a0e6bd74db
+ System UUID:			421A55FC-726A-3071-E6B3-04309FCA4B9D
+ Boot ID:			06314f2e-fb2d-4a74-b861-c54c905785e1
+ Kernel Version:		3.16.0-4-amd64
+ OS Image:			Debian GNU/Linux 8 (jessie)
+ Operating System:		linux
+ Architecture:			amd64
+ Container Runtime Version:	docker://Unknown
+ Kubelet Version:		v1.6.2
+ Kube-Proxy Version:		v1.6.2
+PodCIDR:			172.30.1.0/24
+ExternalID:			10.86.20.60
+Non-terminated Pods:		(0 in total)
+  Namespace			Name		CPU Requests	CPU Limits	Memory Requests	Memory Limits
+  ---------			----		------------	----------	---------------	-------------
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  CPU Requests	CPU Limits	Memory Requests	Memory Limits
+  ------------	----------	---------------	-------------
+  0 (0%)	0 (0%)		0 (0%)		0 (0%)
+Events:
+  FirstSeen	LastSeen	Count	From			SubObjectPath	Type		Reason			Message
+  ---------	--------	-----	----			-------------	--------	------			-------
+  14m		14m		1	kubelet, 10.86.20.60			Normal		Starting		Starting kubelet.
+  14m		14m		1	kubelet, 10.86.20.60			Warning		ImageGCFailed		unable to find data for container /
+  14m		14m		1	kubelet, 10.86.20.60			Warning		KubeletSetupFailed	Failed to start ContainerManager system validation failed - Following Cgroup subsystem not mounted: [memory]
+  14m		14m		1	kubelet, 10.86.20.60			Normal		NodeHasSufficientDisk	Node 10.86.20.60 status is now: NodeHasSufficientDisk
+  14m		14m		1	kubelet, 10.86.20.60			Normal		NodeHasSufficientMemory	Node 10.86.20.60 status is now: NodeHasSufficientMemory
+  14m		14m		1	kubelet, 10.86.20.60			Normal		NodeHasNoDiskPressure	Node 10.86.20.60 status is now: NodeHasNoDiskPressure
+  13m		13m		1	kubelet, 10.86.20.60			Normal		Starting		Starting kubelet.
+  13m		13m		1	kubelet, 10.86.20.60			Warning		ImageGCFailed		unable to find data for container /
+  13m		13m		1	kubelet, 10.86.20.60			Warning		KubeletSetupFailed	Failed to start ContainerManager system validation failed - Following Cgroup subsystem not mounted: [memory]
+  13m		13m		1	kubelet, 10.86.20.60			Normal		NodeHasSufficientDisk	Node 10.86.20.60 status is now: NodeHasSufficientDisk
+  13m		13m		1	kubelet, 10.86.20.60			Normal		NodeHasSufficientMemory	Node 10.86.20.60 status is now: NodeHasSufficientMemory
+  13m		13m		1	kubelet, 10.86.20.60			Normal		NodeHasNoDiskPressure	Node 10.86.20.60 status is now: NodeHasNoDiskPressure
+  11m		11m		1	kube-proxy, 10.86.20.60			Normal		Starting		Starting kube-proxy.
+  11m		11m		1	kubelet, 10.86.20.60			Normal		NodeReady		Node 10.86.20.60 status is now: NodeReady
+  11m		11m		1	kubelet, 10.86.20.60			Normal		Starting		Starting kubelet.
+  11m		11m		2	kubelet, 10.86.20.60			Normal		NodeHasSufficientDisk	Node 10.86.20.60 status is now: NodeHasSufficientDisk
+  11m		11m		2	kubelet, 10.86.20.60			Normal		NodeHasSufficientMemory	Node 10.86.20.60 status is now: NodeHasSufficientMemory
+  11m		11m		2	kubelet, 10.86.20.60			Normal		NodeHasNoDiskPressure	Node 10.86.20.60 status is now: NodeHasNoDiskPressure
+  11m		11m		1	kubelet, 10.86.20.60			Warning		Rebooted		Node 10.86.20.60 has been rebooted, boot id: e15c2f2f-bc15-4a55-8973-3382e2b41958
+  11m		11m		1	kubelet, 10.86.20.60			Warning		ImageGCFailed		unable to find data for container /
+  9m		9m		1	kube-proxy, 10.86.20.60			Normal		Starting		Starting kube-proxy.
+  9m		9m		1	kubelet, 10.86.20.60			Normal		Starting		Starting kubelet.
+  9m		9m		1	kubelet, 10.86.20.60			Warning		ImageGCFailed		unable to find data for container /
+  9m		9m		2	kubelet, 10.86.20.60			Normal		NodeHasSufficientDisk	Node 10.86.20.60 status is now: NodeHasSufficientDisk
+  9m		9m		2	kubelet, 10.86.20.60			Normal		NodeHasSufficientMemory	Node 10.86.20.60 status is now: NodeHasSufficientMemory
+  9m		9m		2	kubelet, 10.86.20.60			Normal		NodeHasNoDiskPressure	Node 10.86.20.60 status is now: NodeHasNoDiskPressure
+  9m		9m		1	kubelet, 10.86.20.60			Warning		Rebooted		Node 10.86.20.60 has been rebooted, boot id: 06314f2e-fb2d-4a74-b861-c54c905785e1
+  9m		9m		1	kubelet, 10.86.20.60			Normal		NodeReady		Node 10.86.20.60 status is now: NodeReady
