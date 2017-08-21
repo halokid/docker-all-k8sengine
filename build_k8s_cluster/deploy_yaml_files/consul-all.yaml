@@ -25,7 +25,13 @@ spec:
         #- name: jenkins-home-storage
         #  hostPath: 
         #   path: "/opt/gitcode/my_jenkins_home" 
-      nodeName: 10.86.20.60
+        #nodeName: 10.86.20.60 
+        command: [
+          "/bin/start",   
+          " -server",
+          "-bootstrap",
+          "-rejoin"   
+        ]
 ---
 apiVersion: v1
 kind: Service
@@ -36,8 +42,8 @@ metadata:
 spec:
   ports:
     - port: 8300
-      targetPort: 8300 
-      nodePort: 8300 
+      targetPort: 8700 
+      nodePort: 8700 
       name: a 
     - port: 8400 
       targetPort: 8400 
