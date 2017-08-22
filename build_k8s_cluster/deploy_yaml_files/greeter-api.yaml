@@ -1,0 +1,23 @@
+# api进程 要跟 srv,  consul通信，但是这个不是 api网关 
+apiVersion: extensions/v1beta1 
+kind: Deployment
+metadata:
+  name: micro-greeter-api 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: micro-greeter-api-xx
+        run: micro-greeter-api 
+    spec:
+      containers:
+        - name: micro-greeter-api 
+          image: r00txx/micro-greeter-api:v1 
+          command: [
+            "/greeter-srv",   
+            "--registry_address=10.86.20.63:8500",
+          ]
+
+
+
