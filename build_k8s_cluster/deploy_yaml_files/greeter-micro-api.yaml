@@ -1,48 +1,41 @@
 apiVersion: extensions/v1beta1 
 kind: Deployment
 metadata:
-  name: my-micro
+  name: micro-greeter-micro-api
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: my-micro-xx
-        run: my-micro
+        name: micro-greeter-micro-api-xx
+        run: micro-greeter-micro-api
     spec:
       containers:
-      - name: micro 
+      - name: micro-api 
         image: microhq/micro:latest
-        #volumeMounts:
-        #  - name: jenkins-home-storage
-        #    mountPath: /var/jenkins_home
         ports:
         - containerPort: 8080
-        #volumes:
-        #- name: jenkins-home-storage
-        #  hostPath: 
-        #   path: "/opt/gitcode/my_jenkins_home" 
-      #nodeName: 10.86.20.60 
         command: [
           "/micro",
           "--registry_address=10.86.20.63:8500",
-          "--api_handler=rpc api"
+          #"--api_handler=rpc", 
+          "api"
         ]
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    name: my-micro-xx 
-  name: my-micro 
+    name: micro-greeter-micro-api-xx 
+  name: micro-greeter-micro-api 
 spec:
   ports:
     - port: 8080
-      targetPort: 8980 
+      targetPort: 8080 
       nodePort: 8980 
       name: a 
   selector:
-    run: my-micro 
+    run: micro-greeter-micro-api 
   type: NodePort 
 
 
