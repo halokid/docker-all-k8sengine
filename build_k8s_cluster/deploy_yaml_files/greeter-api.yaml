@@ -1,4 +1,5 @@
-# api进程 要跟 srv,  consul通信，但是这个不是 api网关 
+# api进程 要跟 srv,  consul通信，但是这个不是 api网关
+# 跟 srv, consul 通信依靠 nodePort 就可以了,不用启动时指定
 apiVersion: extensions/v1beta1 
 kind: Deployment
 metadata:
@@ -15,7 +16,7 @@ spec:
         - name: micro-greeter-api 
           image: r00txx/micro-greeter-api:v1 
           command: [
-            "/greeter-srv",   
+            "/greeter-api",   
             "--registry_address=10.86.20.63:8500",
           ]
 
