@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: micro-greeter 
-          image: r00txx/micro-greeter-srv:v5 
+          image: 10.86.20.57:5000/micro-greeter-srv:v10 
           command: [
             "/greeter-srv",   
             "--registry_address=10.86.20.63:8500",
